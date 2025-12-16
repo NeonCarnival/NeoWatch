@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Runner Check
-        run: echo "GitHub Runner ist online und funktionsfähig!"
+        run: echo "GitHub Runner ist online!"
