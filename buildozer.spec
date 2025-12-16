@@ -1,4 +1,4 @@
-app]
+[app]
 title = NeoWatch
 package.name = neowatch
 package.domain = org.neoncarnival
