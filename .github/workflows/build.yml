@@ -1,17 +1,17 @@
 name: NeoWatch Build
-on: [push, workflow_dispatch]
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build with Buildozer
-        uses: ArtemShatalov/buildozer-action@v1.6.1
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          workdir: .
-          buildozer_version: master
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: NeoWatch-Alpha
-          path: bin/*.apk
+          python-version: '3.11'
+      - name: Install Buildozer
+        run: pip install buildozer kivy cython==0.29.33
+      - name: Build APK
+        run: buildozer android debug
+        env:
+          ACCEPT_SDK_LICENSE: "yes"
